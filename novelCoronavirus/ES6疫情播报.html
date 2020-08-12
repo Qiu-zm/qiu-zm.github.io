@@ -120,7 +120,7 @@
         return sum > 0 ? "+" + sum : "-" + sum;
     }
 
-    http.get("http://api.tianapi.com/txapi/ncovcity/index?key=f81e0e4939b0d806dd6cf79be56cf131").then(result => {
+    http.get("https://api.tianapi.com/txapi/ncovcity/index?key=f81e0e4939b0d806dd6cf79be56cf131").then(result => {
         result = JSON.parse(result);
         console.log('result ==> ', result);
 
@@ -211,7 +211,7 @@
     // 国内统计
     let httphome = new Http();
 
-    httphome.get("http://api.tianapi.com/txapi/ncov/index?key=f81e0e4939b0d806dd6cf79be56cf131").then(result => {
+    httphome.get("https://api.tianapi.com/txapi/ncov/index?key=f81e0e4939b0d806dd6cf79be56cf131").then(result => {
         result = JSON.parse(result);
         console.log('国内统计result ==> ', result);
 
@@ -282,7 +282,7 @@
     var QQZY = 0;
 
 
-    httpoverseas.get("http://api.tianapi.com/txapi/ncovabroad/index?key=f81e0e4939b0d806dd6cf79be56cf131").then(result => {
+    httpoverseas.get("https://api.tianapi.com/txapi/ncovabroad/index?key=f81e0e4939b0d806dd6cf79be56cf131").then(result => {
         result = JSON.parse(result);
         console.log('海外result ==> ', result);
 
