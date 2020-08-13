@@ -1,4 +1,3 @@
-
 * {
     padding: 0;
     margin: 0;
@@ -7,38 +6,46 @@
 li {
     list-style: none;
 }
-audio{
+
+audio {
     opacity: 0;
     display: none !important;
 }
+
 body {
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     /* height: 100vh; */
+    height: 100vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.box_content::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+.box_content::-webkit-scrollbar:horizontal {
+    width: 0;
+    height: 0;
+    display: none;
 }
 
 .box {
-  flex: 1;
-    /* max-width: 452px; */
-    min-width: 352px;
-    /* height: 800px; */
-    /* margin: 0 auto; */
-  
-
+    flex: 1;
 }
 
 .box_top {
     position: relative;
-    /* background: url("../images/01.jpg") no-repeat; */
     background-image: url("../images/01.jpg");
     background-repeat: no-repeat;
-    /* background-size: cover; */
     background-size: 100%;
     background-position: center center;
-    /* padding: 0 20px; */
     width: 100%;
-    height: 250px;
+    height: 30vh;
 }
 
 .top_make {
@@ -71,9 +78,14 @@ body {
     border: 0;
 }
 
-.box_content {
+.box_content,.box_content-v {
+    background-color: #ccc;
     overflow-y: auto;
-    height: 462px;
+
+    height: 60vh;
+    padding: 10px;
+
+    /* height: 462px; */
 }
 
 .box_content::-webkit-scrollbar {
@@ -109,22 +121,32 @@ body {
 .box_content-v .item {
     cursor: pointer;
     padding: 7px 28px;
+    background-color: white;
+    margin-bottom: 10px;
+    border-radius: 5px;
     /* width: 100%; */
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
 }
-
+.box_content .item:last-of-type,
+.box_content-v .item:last-of-type {
+    margin-bottom: 40px;
+}
+.box_content-v .item:first-of-type {
+    margin-top: 10px;
+}
 .box_content .item:hover,
 .box_content-v .item:hover {
-    background: #ff66668a;
+    background-color: #ff66668a;
     color: white;
 }
 
 .box_content .item .left,
 .box_content-v .item .left {
-    width: 33px;
-    height: 33px;
+    width: 55px;
+    height: 55px;
     /* width: 100%; */
     border-radius: 50%;
     overflow: hidden;
@@ -140,22 +162,35 @@ body {
 .box_content-v .item .right {
     flex: 1;
     /* background: skyblue; */
-    margin-left: 10px;
+    margin-left: 20px;
     /* width: 100%; */
-    font-weight: 300;
+    /* font-weight: 700; */
+}
+.box_content .item .right h4,
+.box_content-v .item .right h4{
+    font-weight: 700;
+}
+.box_content .item .right p,
+.box_content-v .item .right p{
+    color: rgba(129, 129, 129, 0.671);
 }
 
 .box .box_foot {
     width: 100%;
-    height: 70px;
+    height: 60px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
 }
 
 .box .box_foot ul {
     width: 100%;
-    height: 100%;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #f55c5c;
+    margin-bottom: 0;
 }
 
 .box .box_foot li {
@@ -203,7 +238,7 @@ li:nth-of-type(3) span::after {
 }
 
 .active {
-    background: #f55c5c;
+    background-color: #f55c5c !important;
     color: white;
 }
 
@@ -382,8 +417,9 @@ input[type=radio] {
 
 .nav {
     width: 100%;
-    height: 30px;
-    background: yellowgreen;
+    height: 5vh;
+    line-height: 5vh;
+    background: #fff;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -396,25 +432,27 @@ input[type=radio] {
 }
 
 .actv {
-    background: skyblue;
-    color: snow;
+    background: #FF9933;
+    height: 100%;
+    color: #FFFFCC;
 }
 
 .box_content-v {
-    height: 462px;
     overflow-y: auto;
+    /* margin-bottom: 40px; */
 
 }
 
 .box_content-v .search {
     display: flex;
-    /* align-items: center; */
+    height: 5vh;
 }
 
 .box_content-v .search input {
     /* width: 80%; */
     flex: 5;
-    height: 25px;
+    height: 100%;
+    /* height: 25px; */
     box-sizing: border-box;
 }
 
@@ -426,5 +464,6 @@ input[type=radio] {
     box-sizing: border-box;
     text-align: center;
     color: white;
+    line-height: 5vh;
     cursor: pointer;
 }
