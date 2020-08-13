@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .content {
+    /* width: 500px; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .xxx {
+    width: 500px;
+    border: 1px red solid;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  select {
+    display: block;
+    /* width: 100%; */
+    width: 60%;
+    height: 30px;
+
+  }
+
+  .box {
+    border: 1px #ccc solid;
+    width: 60%;
+    height: 50px;
+  }
+</style>
+
+<body>
+  <div class="content" id="app">
+    <div class="xxx">
+      <select class="province" @change="provincelist($event)">
+        <option>-请选择-省</option>
+        <option v-for="(item,index) in province" :value="index">{{item}}</option>
+      </select>
+      <select class="city" @click="citylist" @change="citylistchange($event)">
+        <option>-请选择-市</option>
+        <option v-for="(cityitem,index) in citys" :value="cityitem.id">{{cityitem.name}}</option>
+      </select>
+      <select class="county" @click="countylist">
+        <option>-请选择-县/区</option>
+        <option v-for="(countyitem,index) in countys">{{countyitem.name}}</option>
+      </select>
+      <!-- <div class="text"> -->
+        <!-- 详细地址<input type="text"> -->
+      <!-- </div> -->
+      <!-- <button>确定</button> -->
+      <!-- <div class="box" v-show="isshow"> -->
+        <!-- {{item}}>>{cityitem.name}}>>{{countyitem.name}} -->
+      <!-- </div> -->
+    </div>
+  </div>
+</body>
+<script src="js/Vue.js"></script>
+<script src="js/area.js"></script>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      areas: area,
+      // provincetext:'nihao',
+      province: [],
+      city: [],
+      citys: [],
+      countys: [],
+      provinceindex: 0,
+      cityindex: 0,
+    },
+    methods: {
+      classify() {
+        this.province = this.areas.province_list;
+        this.city = this.areas.city_list;
+        this.county = this.areas.county_list;
+
+      },
+      provincelist(event) {
+        console.log('event :>> ', event);
+        this.provinceindex = event.target.value.substr(0, 2);
+        console.log(' this.province :>> ',  this.province);
+        console.log(' event.target.value :>> ',  event.target.value);
+        this.citys = [];
+        this.countys = [];
+        this.cityindex = 0;
+      },
+      citylistchange(event) {
+        this.cityindex = event.target.value.substr(0, 4);
+
+      },
+      citylist() {
+        this.citys=[];
+        for (const key in this.city) {
+          if (key.substr(0, 2) == this.provinceindex) {
+            this.citys.push({
+              id: key,
+              name: this.city[key]
+            })
+          }
+        }
+
+        this.countys = [];
+      },
+      isshow(){
+
+      },
+      countylist() {
+        for (const key in this.county) {
+          if (key.substr(0, 4) == this.cityindex) {
+            this.countys.push({
+              id: key,
+              name: this.county[key]
+            })
+          }
+        }
+      },
+    },
+    created() {
+      this.classify();
+    },
+
+
+  })
+
+
+</script>
+
+</html>

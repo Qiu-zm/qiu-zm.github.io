@@ -1,0 +1,47 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+	color: #666666;
+}
+li{
+	list-style: none;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.clear{
+	clear: both;
+}
+.clearfix::before,.clearfix::after{
+	content: "";
+	display: table;
+}
+
+/* 定义版型类 */
+.w{
+	width: 1200px;
+	margin: 0 auto;
+}
+/* 头部 */
+.header{
+	height: 230px;
+	background: skyblue;
+}
+.header .top_nav{
+	height: 30px;
+	background: palegreen;
+}
+.header .logo{
+	height: 157px;
+	background: papayawhip;
+}
+.header .main_nav{
+	background: pink;
+	height: 43px;
+}

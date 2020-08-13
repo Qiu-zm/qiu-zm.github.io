@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 1.设置网页背景颜色
+		var objBody = document.body;
+		objBody.style.backgroundColor = "#f0f0f0";
+
+		// 图片最大宽度
+		var min_width = 30;
+		// 图片最小宽度
+		var max_width = 200;
+
+		// 图片能够出现位置的左边界
+		var left_pos = 0;
+
+		// 图片能够出现位置的右边界
+		var right_pos = window.innerWidth - max_width;
+
+		// 图片能够出现位置的上边界
+		var top_pos = 0;
+		
+		// 图片能够出现位置的下边界
+		var bottom_pos = window.innerHeight - max_width;
+
+		// 定义一个得到指定范围的随机整数
+		function getRandom(min,max){
+			return Math.floor( Math.random()*(max-min+1) + min );
+		}
+		
+		// 创建狗狗图片的函数
+		function dog(){
+			// 2.思想:如何在页面出现一个狗狗图片?往body标签添加一个img标签元素
+			var img = document.createElement("img");
+			img.src = "images/dog.png";
+			// 3.让图片随机大小 如果只设置图片的宽度或者高度其中一个,就可以等比例缩放
+			// 通过img标签的width属性设置宽度 不需要带px单位
+			// img.width = getRandom(min_width,max_width);
+
+			// 通过css设置width属性,记得带px单位
+			img.style.width  = getRandom(min_width,max_width) + "px";
+
+			// 4. 让图片随机出现在网页的随机位置中  通过定位样式实现
+			img.style.position = "absolute";
+			
+			// 得到随机水平位置
+			var x = getRandom(left_pos , right_pos);
+
+			// 得到随机垂直位置
+			var y = getRandom(top_pos , bottom_pos);
+
+			// 设置偏移量
+			img.style.left = x + "px";
+			img.style.top = y + "px";
+			
+			// 5. 点击哪个图片删除哪个
+			img.onclick = function(){
+				// this代表当前被点击的那个图片
+				// 删除方法一
+				// this.remove();
+
+				// 删除方法二
+				this.parentNode.removeChild( this );
+			}
+
+			// 添加到body中
+			objBody.appendChild( img );
+		}
+
+		// 3.让定时器帮我们每隔1秒自动创建狗狗图片
+		setInterval( dog , 1000 );
+	</script>
+</body>
+</html>

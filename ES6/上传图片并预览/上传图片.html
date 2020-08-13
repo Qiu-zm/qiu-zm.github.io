@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件及时预览功能</title>
+</head>
+<script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
+<style>
+    #clubInputImagePreview {
+        min-height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .group {
+        /* width: 100%; */
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* #clubInputImagePreview div:hover::after {
+        content: "点击删除";
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.5);
+        text-align: center;
+        line-height: 200px;
+        color: white;
+        font-size: 25px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+
+    } */
+
+    #clubInputImagePreview div {
+        min-height: 200px;
+        position: relative;
+        margin: 10px;
+    }
+
+    #clubInputImagePreview div span {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        line-height: 20px;
+        display: inline-block;
+        color: #ccc;
+        cursor: pointer;
+        background: white;
+        border-radius: 50%;
+    }
+
+    #clubInputImagePreview div img {
+        width: 200px;
+        height: 200px;
+        background-size: 100%;
+    }
+
+    body {
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .content {
+        /* width: 100%; */
+    }
+
+    .uploading {
+        border: 1px solid #CCC;
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+    }
+
+    .uploading label {
+        width: 100%;
+        height: 100%;
+        background-image: url("images/tianjia.png");
+        background-size: 100%;
+        display: block;
+        /* background: red; */
+    }
+
+    .uploading label input {
+        opacity: 0;
+    }
+
+    .fd {
+        transform: scale(1.5);
+        transition: all 0.3s;
+    }
+</style>
+
+<body>
+    <div class="content">
+        <h4 class="title">点击添加图片</h4>
+        <div class="uploading">
+            <label title="上传相册" for="ClubImagesUpload" id="btnClubImg" class="">
+                <input type="file" accept="image/*" name="ClubImagesUpload" id="ClubImagesUpload" class=""
+                    multiple="multiple" value="上传图片">
+                <!-- <img src="/Images/registerNewSite/btn_addimg.png" class="addImg" /> -->
+            </label>
+        </div>
+    </div>
+
+    <div class="group" id="preViewMore">
+        <div id="clubInputImagePreview" class="col-sm-9 img-preview img-preview-sm"></div>
+    </div>
+    <script>
+
+        //获取元素的方法
+        function query(selector) {
+            return document.querySelector(selector);
+        }
+
+        let imgs = query("#clubInputImagePreview");
+
+        var $input = $("#ClubImagesUpload");
+
+        // console.log($input);//打印当前元素
+        $input.on("change", function () {
+            console.log(this);
+            let files = this.files;
+            let lenght = files.lenght;
+            console.log("files ==>", files)
+            $.each(files, function (key, value) {
+                console.log("key ==>", key)
+                console.log("value ==>", value)
+                //实例化一个FileReader对象
+                var fileReader = new FileReader();
+
+                //获取当前文件
+                var file_ = files[key];
+                // console.log(222)
+
+                //将当前文件进行正则匹配，看是否是选择的图片
+                if (/^image\/\w+$/.test(file_.type)) {
+                    //当读取操作完成时调用
+                    fileReader.onload = function () {
+
+                        imgs.innerHTML += `<div class="imgbox"><img src="${this.result}"><span class="close">×</span></div>`;
+
+                        let spans = document.querySelectorAll(".close");
+                        let imgboxs = document.querySelectorAll(".imgbox img");
+                        spans.forEach(function (item, index) {
+                            item.addEventListener("click", function () {
+                                this.parentNode.remove();
+                            })
+
+                        })
+                        imgboxs.forEach(function (ite, ind) {
+                            ite.addEventListener("click", function () {
+                                imgboxs.forEach(function (i, d) {
+                                    i.classList.remove("fd");
+                                })
+                                this.classList.add("fd");
+                            })
+
+                        })
+
+                    }
+                }else{
+                    alert("请上传正确图片格式!")
+                }
+
+                fileReader.readAsDataURL(value);
+
+
+
+            });
+
+
+        })
+
+        // imgs.addEventListener("click", function (e) {
+        //     e.target.remove();
+        // })
+
+    </script>
+</body>
+
+</html>

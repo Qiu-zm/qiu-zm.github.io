@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;  
+    }
+    li{
+        list-style: none;
+    }
+    .content{
+
+        width: 408px;
+        height: 408px;
+        margin: 100px auto;
+        border: 1px red solid;
+        position: relative;
+        overflow: hidden;
+    }
+    .box{
+        position: absolute;
+        height: auto;
+        top: -100px;
+    }
+    ul{
+        width: 408px;
+        height: 102px;
+    }
+    ul li{
+        width: 100px;
+        height: 100px;
+        background: skyblue;
+        float: left;
+        border: 1px black solid;
+        top: 0;
+    }
+    .black{
+        background: black;
+    }
+    span{
+        margin-top: 20px;
+    }
+</style>
+<body>
+    <button>停止</button>
+
+    <button>重新开始</button>
+    <!-- <input type="text" value="0" /> -->
+    <div class="fenshu">目前分数为:
+        <span>0</span>
+    </div>
+    
+    <div class="content">
+        <div class="box">
+            <!-- <ul>
+                <li class="black" index= ""></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul> -->
+        </div>
+    </div>
+    
+<!-- </body>
+<script src="js/anminate.js"></script> -->
+<script>
+    var content = document.querySelector(".content");
+    //
+    var box = document.querySelector(".box");
+    //
+    var btns = document.querySelectorAll("button");
+
+    var uls = document.querySelectorAll("ul");
+
+    var span = document.querySelector("span");
+
+    var jiasu = 1;
+    var grade = 0;
+animate( box , 0 );
+
+function animate( obj , target , callback ){
+    
+    clearInterval( timer );
+    
+    var timer = window.setInterval(function(){
+
+        obj.style.top = obj.offsetTop + jiasu + "px";
+
+        if( obj.offsetTop >= target ){
+
+            // if( e.target.parentNode.getAttribute("date-inedx")){
+            //     alert("游戏失败!");
+            //     window.clearInterval( timer );
+            //     clearInterval( timer );
+            //     span.innerHTML = 0;
+            // }
+           if( obj.children.length == 4  ){
+                if( (obj.children[obj.children.length - 1].getAttribute("index")) == "" ){
+                    // window.clearInterval(timer);
+                    // gameover = true;
+                    alert("游戏结束~");
+                }
+            }
+            if( obj.children.length >= 5 ){
+
+                
+                obj.removeChild( obj.children[obj.children.length-1] );
+                
+            }
+            //创建行
+            var ul = document.createElement("ul");
+            ul.setAttribute("index", "");
+            var suiji = Math.floor( Math.random()*4 + 1);
+
+            for( var j = 1; j <= 4; j++){
+
+               var li = document.createElement("li");
+
+                ul.appendChild( li );
+                if( j == suiji ){
+                    li.className = "black";
+
+                    // li.setAttribute("date-index" , "heise");
+                    // li.parentNode.setAttribute("date-index" , false);
+                    // var hes = li.getAttribute("date-index");
+                }
+
+            }
+
+            box.insertBefore(ul, box.children[0] );
+                //行数大于五删除最后一行
+            
+            box.style.top = "-100px";
+
+        }
+        // if( box.children[box.children.length-1].getAttribute( "date-index" ) == null ){
+        //         clearInterval( timer );
+        //         console.log(111);
+        // }
+
+    },15)
+box.onclick = function( e ){
+    
+    var e = e || window.event;
+
+    if( e.target.className == "black" ){
+
+        grade++;
+        e.target.removeAttribute("class");
+
+        span.innerHTML = grade;
+        if( grade%5 == 0 ){
+            jiasu++;
+        }
+
+        e.target.parentNode.removeAttribute("index","abc");
+
+    }else{
+        alert("游戏失败!");
+        window.clearInterval( timer );
+        span.innerHTML = 0;
+    }
+
+}
+    // console.log(e.target.parentNode);
+btns[0].onclick =  function(){
+    window.clearInterval( timer );
+}
+btns[1].onclick =  function(){
+    location.reload();
+}
+} 
+
+</script>
+</html>

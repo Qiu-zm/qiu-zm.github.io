@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  #app {
+    width: 252px;
+  }
+
+  ul {
+    margin: 50px auto;
+    border: 1px solid red;
+    /* background-color: tomato; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: space-around; */
+    /* align-items: center; */
+    width: 100%;
+    overflow: hidden;
+  }
+
+  ul li {
+    float: left;
+    /* flex: 1; */
+    border: 1px black solid;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-image: url("images/bai.png");
+
+  }
+
+
+  ul .huangimg {
+    background-image: url("images/huang.png") !important;
+
+  }
+</style>
+
+<body>
+
+  <div id="app">
+    <ul @mouseleave="mouseleave">
+      <!-- <li v-for="(item,index) in img" @click="toggleImg(item,index)"></li> -->
+      <li :class="{huangimg: item.isActive}" :style="{backgroundImage:`url(${item.url})`}" v-for="(item,index) in img"
+        @click="toggleImg(item, index)" @mouseenter="mouseenter(index)"></li>
+    </ul>
+  </div>
+
+</body>
+<script src="js/Vue.js"></script>
+<script>
+  new Vue({
+    el: "#app",
+    count: 0,
+    countleave: 0,
+    isopen: false,
+    data: {
+      img: [
+        { url: 'images/bai.png', isActive: true },
+        { url: 'images/bai.png', isActive: false },
+        { url: 'images/bai.png', isActive: false },
+        { url: 'images/bai.png', isActive: false },
+        { url: 'images/bai.png', isActive: false },
+      ]
+    },
+    methods: {
+      toggleImg(item, index) {
+
+        // 改变所有星星为false
+        for (let i = 0; i < this.img.length; i++) {
+          this.img[i].isActive = false;
+        }
+
+        // 判断当前点击是否是最后一个高亮
+        if (this.count != index) {
+          //查找之前激活的
+          for (let i = 0; i <= index; i++) {
+            this.img[i].isActive = true;
+            this.count = index;
+            this.countleave = index;
+
+          }
+          // 保存当前星星状态,在鼠标移出时作为判断
+          this.isopen = true;
+        } else {
+          // 将常量重置一个不等下标得数(只要大于最大下标)
+          this.count = this.img.length;
+          // 保存当前星星状态,在鼠标移出时作为判断
+          this.isopen = false;
+        }
+
+
+      },
+      mouseenter(index) {
+        //清空所有高亮
+        for (let i = 0; i < this.img.length; i++) {
+          this.img[i].isActive = false;
+        }
+        // 给所点击到到前面的星星高亮
+        for (let i = 0; i <= index; i++) {
+          this.img[i].isActive = true;
+        }
+      },
+      // 移出父类(ul)执行方法
+      mouseleave() {
+        //清空所有高亮
+        for (let i = 0; i < this.img.length; i++) {
+          this.img[i].isActive = false;
+        }
+        //移出时判断是否有高亮存在
+        if (this.isopen) {
+          for (let i = 0; i <= this.countleave; i++) {
+            this.img[i].isActive = true;
+          }
+        }
+
+      }
+    },
+
+  })
+
+</script>
+
+</html>

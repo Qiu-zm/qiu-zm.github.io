@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .score{
+        margin-left: 50px;
+        margin-top: 44px;
+    }
+    .box{
+        width: 400px;
+        height: 400px;
+        margin-left: 50px;
+        margin-top: 50px;
+        border:1px solid blue;
+        /* 父相 */
+        position: relative;
+        /* 溢出隐藏 */
+        overflow: hidden;
+    }
+    .box .game {
+        /* 因为后期我们需要让游戏区下落运动起来,所以需要给游戏区设置绝对定位 */
+        /* 子绝 */
+        position: absolute;
+        top: -50px;
+        left: 0;
+    }
+    .box .game .row div{
+        width: 98px;
+        height: 98px;
+        border:1px solid gray;
+        float: left;
+    }
+    .box .game .row .black{
+        background: black;
+    }
+</style>
+<body>
+    <!-- 分数文本框 -->
+    <input type="text" class="score" disabled="disabled" value="0"/>
+    <button>暂停</button>
+    <button>重新开始</button>
+    <!-- 外层大盒子 .box-->
+    <div class="box">
+        <!-- 需要不断向下移动的游戏区 .game -->
+        <div class="game">
+            <!-- .row代表一行  一行里面有4个格子,每个格子我们还是使用div表示-->
+            <div class="row">
+                <div class="black"></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="row">
+                <div></div>
+                <div class="black"></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="row">
+                <div></div>
+                <div></div>
+                <div class="black"></div>
+                <div></div>
+            </div>
+            <div class="row">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div class="black"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // 缓存this
+    var that;
+
+    // 定义一个游戏对象
+    function Game(){
+        that = this;
+
+        // 在构造函数中,定义相关属性
+        // 获取游戏区的对象
+        this.game = document.querySelector(".game");
+
+        // 获取input标签存放分数
+        this.score = document.querySelector(".score");
+
+        // 判断游戏是否结束 false代表游戏没有结束  true代表游戏已经结束
+        this.gameover = false;
+
+        // 当前分数
+        this.fenshu = 0;
+
+        // 游戏到一定分数时的下落速度
+        this.speed = 1;
+
+        // 因为多个方法需要使用timer这个变量,可以把timer这个变量变成游戏对象中的一个属性
+        this.timer = null;
+
+        // 调用初始化方法
+        this.init();
+    }
+
+    
+    // 定义方法,我们就放在原型对象上
+    Game.prototype.createRow = function(){
+
+        // 获取随机数
+        var random = Math.floor(Math.random()*4 + 1);
+                
+        // 创建行
+        var row = document.createElement("div");
+        row.className = "row";
+
+        for(var i = 1 ; i <= 4; i++ ){
+
+            // 创建列
+            var div = document.createElement("div");
+            
+            // 将随机数添加到其中一个div中
+            if(i == random){
+                div.className = "black";
+            }
+            //将div添加到行中
+            row.appendChild(div);
+        }
+        // 再把创建出来的行添加到游戏区的子元素列表最前面
+        that.game.insertBefore(row, that.game.firstElementChild );
+        // 设置游戏的top值为-100px
+        that.game.style.top = "-100px";
+    }
+
+    // 游戏区动画下落的方法(不断往下移动)
+    Game.prototype.moveDown = function(){
+
+        // 让div游戏 动起来 向下运动
+        this.timer = window.setInterval(function(){
+
+            // 在定时器里面的this指向window对象
+            that.game.style.top = that.game.offsetTop + that.speed + "px";
+
+            // 当游戏区的top值大于等于0的时候,动态添加一行
+            if(  that.game.offsetTop >=0 ){
+                // 判断游戏区最后一行上的自定义属性的值是否为null
+                if( that.game.lastElementChild.getAttribute("pass") == null ){
+                    //弹窗提示
+                    alert("游戏结束,请重新开始");
+                    //清除定时器
+                    clearInterval( that.timer );
+                    //改为游戏已结束
+                    that.gameover = true;
+                    return ;
+                }
+
+                // 判断行数是否大于等于5,如果大于等于就删除最后一行
+                if( that.game.children.length >= 5){
+                    that.game.lastElementChild.remove();
+                }
+
+                // 创建一行并且随机出现黑块
+                that.createRow();
+            }
+        },30)
+
+    }
+    
+
+    // 判断游戏是否结束的方法
+    Game.prototype.isOver = function(){
+
+        // 绑定点击事件
+        this.game.onclick = function(e){
+            e = e || window.event;
+
+            // 判断游戏是否已经结束
+            //gameover为true 则游戏结束
+            if( that.gameover ){
+                alert("游戏已经结束,请重新开始");
+
+                //判断是否点击的是黑块就加1分,黑块变白
+            }else if( e.target.className == "black" ){
+                //分数加一
+                that.fenshu++;
+
+                //显示到input中
+                that.score.value = that.fenshu;
+
+                //分数到到一定让游戏加快
+                if(that.fenshu %5 ==0 ){
+                    //下落速度加一
+                    that.speed++;
+                }
+
+                // 将黑的块变白
+                e.target.removeAttribute("class");
+
+                // 如果当前行的黑块被成功点击,我们就给这行添加一个自定义属性pass,并且赋值为true
+                e.target.parentNode.setAttribute("pass",true);
+
+            }else{
+                // 如果点击的白块就弹窗提示游戏结束 
+                alert("游戏结束");
+
+                //清除定时器
+                window.clearInterval( that.timer );
+
+                // 修改gameover的值为true
+                that.gameover = true;
+            }
+        }
+    }
+
+    // 初始化游戏区的方法
+
+    Game.prototype.init = function(){
+        
+        // 在原型对象中this默认是指向实例对象的
+        //游戏下落
+        this.moveDown();
+        //判断是否结束
+        this.isOver();
+    }
+    var btns = document.querySelectorAll("button");
+    btns[0].onclick = function(){
+        window.clearInterval( that.timer );
+    }
+    btns[1].onclick = function(){
+        location.reload();
+    }
+    
+    // 构造函数中的代码,只要实例化对象就会执行
+    new Game();
+</script>
+</html>

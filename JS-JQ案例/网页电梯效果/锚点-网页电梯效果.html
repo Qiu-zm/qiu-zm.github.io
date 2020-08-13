@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .box {
+    height: 600px;
+    border: 1px solid red;
+    width: 1200px;
+    margin: 20px auto;
+  }
+
+  .content {
+    margin-top: 60px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    position: absolute;
+    top: 660px;
+    right: 20px;
+    z-index: 99;
+    /* transition: all 0.3s; */
+  }
+
+  li {
+    width: 60px;
+    height: 60px;
+    list-style: none;
+    border: orange 1px solid;
+
+  }
+
+  li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    width: 100%;
+    height: 100%;
+  }
+
+  li a:hover {
+    background-color: red;
+    color: white !important;
+  }
+
+  .top {
+    position: absolute;
+    width: 100%;
+    margin: 0 auto;
+    height: 60px;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+    /* background-color: skyblue; */
+    border: violet 1px solid;
+  }
+
+  /* .active{
+    color: red !important;
+  } */
+  .c{
+    height: 1000px;
+  }
+</style>
+
+<body>
+  <ul class="contentul">
+    <li><a href="#content1" class="active">111</a></li>
+    <li><a href="#content2">222</a></li>
+    <li><a href="#content3">333</a></li>
+    <li><a href="#content4">444</a></li>
+    <li><a href="#content5">555</a></li>
+    <li><a href="#content6">666</a></li>
+  </ul>
+  <div class="top" id="top">top</div>
+  <div class="content">
+    <div class="box content1" id="content1">111</div>
+    <div class="box content2" id="content2">222</div>
+    <div class="box content3" id="content3">333</div>
+    <div class="box content4" id="content4">444</div>
+    <div class="box content5" id="content5">555</div>
+    <div class="box content6" id="content6">666</div>
+  </div>
+  <div class="c"></div>
+
+</body>
+
+<script>
+  function query(selector) {
+    return document.querySelectorAll(selector);
+  }
+
+  let navtop = query(".top")[0];
+  let boxs = query(".box");
+  let lias = query(".contentul li a");
+  let contentul = query(".contentul")[0];
+
+  let box1setTop = boxs[1].offsetTop;
+  let navtopeight = navtop.offsetHeight;
+
+
+  window.onscroll = function () {
+
+    let scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
+
+    // console.log(scrolltop);
+
+    boxs.forEach(function (i, v) {
+      // console.log(i.offsetTop)
+
+      let imaxheight = i.offsetTop + i.offsetHeight;
+
+      if ((i.offsetTop - navtopeight) <= scrolltop && imaxheight > scrolltop) {
+        exclusive();
+        lias[v].style.color = "red";
+
+      }
+    })
+    if (box1setTop <= scrolltop) {
+      //侧边列表
+      contentul.style.position = "fixed";
+      contentul.style.top = 100 + "px";
+      // 导航栏
+      navtop.style.position = "fixed";
+
+    } else {
+      // 侧边列表
+      contentul.style.position = "absolute";
+      contentul.style.top = box1setTop + "px";
+      // 导航栏
+      navtop.style.position = "absolute";
+    }
+
+
+    //除去菜单栏的窗口高度
+    let winH = window.innerHeight;
+    //获取的是文档的高度（当指定的高度小于浏览器窗口的时候，为浏览器的高度）
+    let pageH = document.body.scrollHeight;
+    //文档被滚动上去的时候（即滚动条往上滚动的距离）
+    let scrollT = document.body.scrollTop;
+    if (scrolltop + winH >= pageH) {
+      exclusive();
+      lias[lias.length - 1].style.color = "red";
+    }
+  }
+
+
+
+  lias.forEach(function (item, index) {
+    // next();
+
+    item.click(throttle(next, 1050));
+    // item.onclick = function () {
+    function next() {
+      exclusive();
+      this.style.color = "red";
+      // }  
+    }
+  })
+
+
+  function exclusive() {
+    lias.forEach(function (ite, ind) {
+      ite.style.color = "black";
+    })
+  }
+
+
+  //立即执行函数
+  function throttle(func, wait) {
+    let previous = 0;
+    return function () {
+      let now = Date.now();
+      let context = this;
+      let args = arguments;
+      if (now - previous > wait) {
+        func.apply(context, args);
+        previous = now;
+      }
+    }
+  }
+
+
+
+</script>
+
+</html>

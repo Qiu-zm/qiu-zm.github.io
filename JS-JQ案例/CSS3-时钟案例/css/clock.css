@@ -1,0 +1,94 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+.box{
+	position: relative;
+	width: 600px;
+	height: 600px;
+	border: 1px red solid;
+	margin: 0 auto;
+}
+.box2{
+	position: relative;
+	width: 600px;
+	height: 600px;
+	border: 1px red solid;
+	margin: 0 auto;
+}
+.center{
+	width: 30px;
+	height: 30px;
+	background: #000000;
+	border-radius: 15px;
+	position: absolute;
+	top: 285px;
+	left: 285px;
+}
+.clockface{
+	
+}
+.hourhand{
+	left: 284px;
+	top: 0px;
+	position: absolute;
+	
+	animation: time 86400s linear infinite;
+	
+	/* animation-name: time; */
+	/* animation-duration: 10s; */
+	/* animation-timing-function: linear; */
+	/* animation-iteration-count: infinite; */
+
+}
+.minhand{
+	position: absolute;
+	left: 285px;
+	top: 0px;
+	
+	animation: time 3600s linear infinite;
+
+
+}
+.sechand{
+	position: absolute;
+	left: 285px;
+	top: 0px;
+	animation: time 60s linear infinite;
+
+}
+
+@keyframes time{
+	from{
+		transform: rotateZ(0deg);
+	}
+	to{
+		transform: rotateZ(360deg);
+	}
+}
+.hourhand2{
+	left: 284px;
+	top: 0px;
+	position: absolute;
+	animation: time 86400s steps(12) infinite;
+}
+.minhand2{
+	position: absolute;
+	left: 285px;
+	top: 0px;
+	animation: time 3600s steps(60) infinite;
+}
+.sechand2{
+	position: absolute;
+	left: 285px;
+	top: 0px;
+	animation: time1 60s steps(60) infinite;
+}
+@keyframes time1{
+	from{
+		transform: rotateZ(0deg);
+	}
+	to{
+		transform: rotateZ(360deg);
+	}
+}

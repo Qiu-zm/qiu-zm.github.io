@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  body{
+    background-color: black;
+  }
+  .content {
+    margin: 10px auto;
+    width: 300px;
+    height: 40px;
+    /* border: 1px solid red; */
+    background-color: black;
+    position: relative;
+  }
+
+  .left {
+    width: 40px;
+    height: 40px;
+    background-color: blue;
+    border-radius: 50%;
+    position: absolute;
+    left: 55px;
+    z-index: 10;
+    top: 0;
+    /* animation: leftrun 1s infinite linear; */
+  }
+
+  .right {
+    float: right;
+    width: 40px;
+    height: 40px;
+    z-index: 10;
+    background-color: orange;
+    border-radius: 50%;
+    position: absolute;
+    right: 55px;
+    top: 0;
+    /* animation: rightrun 1s infinite linear; */
+  }
+  span {
+    display: inline-block;
+    height: 1px;
+    width: 150px;
+    border: 1px solid white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    animation: spanrun 0.5s infinite linear alternate;
+  }
+
+  @keyframes rightrun {
+    0% {
+      right: 55px;
+      transform: scale(1);
+      z-index: 10;
+      background-color: orange;
+    }
+
+    25% {
+      /* right: 55px; */
+      transform: scale(0.8);
+      z-index: 10;
+    }
+
+    50% {
+      background-color: purple;
+      right: 204px;
+      transform: scale(1);
+      z-index: 100;
+    }
+    75% {
+      /* right: 204px; */
+      transform: scale(1.2);
+      z-index: 100;
+    }
+    100% {
+      right: 55px;
+      background-color: orange;
+      transform: scale(1);
+      z-index: 100;
+    }
+  }
+
+  @keyframes leftrun {
+    0% {
+      left: 55px;
+      transform: scale(1);
+      z-index: 100;
+      background-color: blue;
+    }
+
+    25% {
+      /* right: 55px; */
+      transform: scale(1.2);
+      z-index: 100;
+    }
+
+    50% {
+      left: 204px;
+      transform: scale(1);
+      z-index: 100;
+      background-color: greenyellow;
+    }
+    75% {
+      /* right: 204px; */
+      transform: scale(0.8);
+      z-index: 10;
+    }
+    100% {
+      background-color: blue;
+      left: 55px;
+      transform: scale(1);
+      z-index: 10;
+    }
+  }
+  @keyframes spanrun {
+    /* 0% {
+      width: 160px;
+    } */
+    0% {
+      width: 149px;
+    }
+    /* 25% {
+      width: 25px;
+    } */
+    30% {
+      width: 0px;
+    }
+    /* 75% {
+      width: 25px;
+    } */
+    100% {
+      width: 149px;
+    }
+    /* 100% {
+      width: 30px;
+    } */
+  }
+  .box{
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+  }
+</style>
+
+<body>
+  <div class="box">
+
+  <div class="content">
+    <div class="left"></div>
+    <span></span>
+    <div class="right"></div>
+  </div>
+  <div class="content">
+    <div class="left"></div>
+    <span></span>
+    <div class="right"></div>
+  </div>
+  <div class="content">
+    <div class="left"></div>
+    <span></span>
+    <div class="right"></div>
+  </div>
+  <div class="content">
+    <div class="left"></div>
+    <span></span>
+    <div class="right"></div>
+  </div>
+  <div class="content">
+    <div class="left"></div>
+    <span></span>
+    <div class="right"></div>
+  </div>
+  <div class="content">
+    <div class="left"></div>
+    <span></span>
+    <div class="right"></div>
+  </div>
+  <div class="content">
+    <div class="left"></div>
+    <span></span>
+    <div class="right"></div>
+  </div>
+  <div class="content">
+    <div class="left"></div>
+    <span></span>
+    <div class="right"></div>
+  </div>
+  <div class="content">
+    <div class="left"></div>
+    <span></span>
+    <div class="right"></div>
+  </div>
+</div>
+
+</body>
+<script>
+  var right = document.querySelectorAll(".right");
+  var left = document.querySelectorAll(".left");
+  var span = document.querySelectorAll("span");
+  right.forEach(function(item,index){
+    item.style.animation = `rightrun 3s ${0.13 * index}s infinite ease`;
+  })
+  left.forEach(function(item,index){
+    item.style.animation = `leftrun 3s ${0.13 * index}s infinite ease`;
+  })
+  span.forEach(function(item,index){
+    item.style.animation = `spanrun 1.5s ${0.13 * index}s infinite ease-out`;
+  })
+</script>
+
+</html>

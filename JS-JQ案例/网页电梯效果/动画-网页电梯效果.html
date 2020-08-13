@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .box {
+    height: 600px;
+    border: 1px solid red;
+    width: 1200px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .content {
+    margin-top: 60px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    position: absolute;
+    top: 660px;
+    right: 20px;
+    z-index: 99;
+    /* transition: all 0.3s; */
+  }
+
+  li {
+    width: 60px;
+    height: 60px;
+    list-style: none;
+    border: orange 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  li:hover {
+    background-color: red;
+    color: white !important;
+  }
+
+  .top {
+    position: absolute;
+    width: 100%;
+    margin: 0 auto;
+    height: 60px;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+    background-color: skyblue;
+    border: violet 1px solid;
+  }
+</style>
+
+<body>
+  <ul class="contentul">
+    <li>111</li>
+    <li>222</li>
+    <li>333</li>
+    <li>444</li>
+    <li>555</li>
+    <li>666</li>
+  </ul>
+  <div class="top" id="top">top</div>
+  <div class="content">
+
+    <div class="box content1" id="content1">111</div>
+    <div class="box content2" id="content2">222</div>
+    <div class="box content3" id="content3">333</div>
+    <div class="box content4" id="content4">444</div>
+    <div class="box content5" id="content5">555</div>
+    <div class="box content6" id="content6">666</div>
+  </div>
+
+</body>
+
+<script>
+  function query(selector) {
+    return document.querySelectorAll(selector);
+  }
+
+  let navtop = query(".top")[0];
+  let boxs = query(".box");
+  let lias = query(".contentul li");
+  let contentul = query(".contentul")[0];
+
+  let box1setTop = boxs[1].offsetTop;
+  let navtopeight = navtop.offsetHeight;
+
+  let scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
+  lias.forEach(function (item, index) {
+    // next();
+
+    // item.addEventListener("click",throttle(next, 5000));
+    item.addEventListener("click",debounce(next, 800));
+    // 节流
+    // item.onclick = throttle(next, 5000);
+    // 防抖
+    // item.onclick = debounce(next, 1000);
+    function next() {
+
+      console.log("防抖函数执行 ==>")
+      document.documentElement.scrollTop = boxs[index].offsetTop;
+      exclusive();
+      lias[index].style.color = "red";
+    }
+  })
+
+
+
+
+  window.onscroll = function () {
+
+    let scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
+    boxs.forEach(function (i, v) {
+      let imaxheight = i.offsetTop + i.offsetHeight;
+
+      if ((i.offsetTop - navtopeight) <= scrolltop && imaxheight > scrolltop) {
+        exclusive();
+        lias[v].style.color = "red";
+
+      }
+    })
+    if (box1setTop <= scrolltop) {
+      //侧边列表
+      contentul.style.position = "fixed";
+      contentul.style.top = 100 + "px";
+      // 导航栏
+      navtop.style.position = "fixed";
+
+    } else {
+      // 侧边列表
+      contentul.style.position = "absolute";
+      contentul.style.top = box1setTop + "px";
+      // 导航栏
+      navtop.style.position = "absolute";
+    }
+
+
+    //除去菜单栏的窗口高度
+    let winH = window.innerHeight;
+    //获取的是文档的高度（当指定的高度小于浏览器窗口的时候，为浏览器的高度）
+    let pageH = document.body.scrollHeight;
+    //文档被滚动上去的时候（即滚动条往上滚动的距离）
+    let scrollT = document.body.scrollTop;
+    if (scrolltop + winH >= pageH) {
+      exclusive();
+      lias[lias.length - 1].style.color = "red";
+    }
+  }
+
+
+
+
+
+
+  function exclusive() {
+    lias.forEach(function (ite, ind) {
+      ite.style.color = "black";
+    })
+  }
+
+  //节流
+  //立即执行函数
+  function throttle(func, wait) {
+    let previous = 0;
+    return function () {
+      let now = Date.now();
+      let context = this;
+      let args = arguments;
+      if (now - previous > wait) {
+        func.apply(context, args);
+        previous = now;
+      }
+    }
+  }
+  // 防抖 非即时
+  // function debounce(func, wait) {
+  //   var timeout;
+  //   return function () {
+  //     if (timeout) {
+  //       clearTimeout(timeout);
+  //     }
+  //     timeout = setTimeout(function () {
+  //       func();
+  //     }, wait);
+  //   }
+  // }
+
+  function debounce(func, wait) {
+
+    var timeout;
+    return function () {
+      var _this = this;
+      // console.log(this)
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+
+      var canClick = !timeout
+
+      timeout = setTimeout(function () {
+        timeout = null
+      }, wait)
+
+      if (canClick) {
+        func.apply(_this, arguments)
+      }
+    }
+  }
+
+
+
+</script>
+
+</html>

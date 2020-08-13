@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
+    font-family: "黑体";
+  }
+
+  .content {
+
+    /* background-color: red; */
+    color: white;
+    width: 300px;
+    height: 400px;
+    display: flex;
+    background-image: url("images/bg1.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  .content h2 {
+    font-size: 40px;
+    margin-top: 8vh;
+  }
+
+  .content .imgbox {
+    width: 100%;
+    height: 100px;
+    /* background: skyblue; */
+    background-repeat: no-repeat;
+    /* background-size: 100%; */
+    background-position: center center;
+
+    margin: 5vh 0;
+  }
+
+  .content p {
+    font-size: 20px;
+    font-weight: 100;
+  }
+
+  .content p span {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 700;
+    margin-right: 5px;
+  }
+
+  .content .time {
+    /* height: 70px; */
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+  }
+
+  .content .time span {
+    background: black;
+    padding: 2px 4px;
+    margin: 0 5px;
+  }
+</style>
+
+<body>
+  <div class="content">
+    <h2>京东秒杀</h2>
+    <div class="imgbox">
+
+    </div>
+    <p><span class="seckilltime"></span>点场 倒计时</p>
+    <div class="time"><span>00</span>:<span>00</span>:<span>00</span></div>
+  </div>
+</body>
+<script>
+  function iszero(sum) {
+    return sum < 10 ? "0" + sum : sum;
+  }
+  // console.log(iszero(15))
+
+  function query(selector) {
+    return document.querySelectorAll(selector);
+  }
+
+  let time = query(".time")[0];
+  let seckilltime = query(".seckilltime")[0];
+
+  function settime() {
+
+    let Ztime = (datetime - nowdatetime) / 1000;
+    //排版时间格式
+    let min = Math.floor(Ztime % 3600);
+    //拼接时间
+    time.innerHTML = `<span>${iszero(Math.floor(Ztime / 3600))}</span> : <span>${iszero(Math.floor(min / 60))}</span> : <span>${iszero(Math.floor(Ztime % 60))}</span>`;
+
+  }
+
+
+
+  // console.log(htimestr);
+  let nowdate = new Date();
+  // console.log("nowdate ==>",nowdate)
+  let nowdatetime = nowdate.getTime();
+
+  let hnowdate = nowdate.getHours();
+  // 活动小时
+
+  console.log("hnowdate ==>", hnowdate)
+  if (hnowdate % 2 != 0) {
+    seckilltime.innerHTML = iszero(hnowdate - 1) + ":00";
+    var htime = hnowdate + 1;
+
+  } else {
+    seckilltime.innerHTML = iszero(hnowdate) + ":00";
+    var htime = hnowdate + 2;
+
+  }
+  // let htime = +seckilltime.innerHTML.substr(0, 2);
+  // 活动天
+  let dtime = nowdate.getDate();
+
+  // 活动月
+  let Mtime = nowdate.getMonth();
+
+  // console.log(Mtime)
+  let date = new Date(2020, Mtime, dtime, htime, 00, 00);
+  let datetime = date.getTime();
+  settime();
+
+
+  setInterval(function () {
+    nowdate = new Date();
+    nowdatetime = nowdate.getTime();
+    if (datetime <= nowdatetime) {
+      // if (htime = 24) {
+        // htime = 0;
+        // dtime++;
+      // }
+      // htime = htime + 2;
+      let date = new Date(2020, Mtime, dtime, htime, 00, 00);
+      datetime = date.getTime();
+      // seckilltime.innerHTML = `${htime}:00`;
+      settime();
+    }
+    settime();
+  }, 1000);
+</script>
+
+</html>

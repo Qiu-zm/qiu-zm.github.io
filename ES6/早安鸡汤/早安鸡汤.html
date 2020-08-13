@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+    }
+    .btn{
+        width: 100%;
+        /* height: 30px; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid orange;
+
+    }
+    .btn button{
+        border: 1px solid #ccc;
+        background-color: white;
+        color: tomato;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 10px;
+        margin: 0 10px;
+    }
+    .content{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        border: 1px solid orchid;
+
+    }
+    
+    .box {
+        /* height: 30px; */
+        width: 80%;
+        min-height: 80px;
+        border: 1px solid skyblue;
+        border-radius: 15px;
+        /* text-align: center; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<body>
+    <div class="btn">
+        <button>获取毒鸡汤</button>
+        <button>获取土味情话</button>
+        <button>获取盆友圈文案</button>
+        <label for="">
+            <input type="text">
+            <button>生成藏头诗</button>
+        </label>
+    </div>
+    <div class="content">
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+        <div class="box box4"></div>
+    </div>
+</body>
+<script src="js/promise_ajax.js"></script>
+<script>
+
+
+    function query(selector) {
+        return document.querySelectorAll(selector);
+    }
+
+    let box1 = query(".box1")[0];
+    let box2 = query(".box2")[0];
+    let box3 = query(".box3")[0];
+    let box4 = query(".box4")[0];
+
+    let inp = query("input")[0];
+
+    query("button")[0].onclick = function () {
+
+
+        let http = new Http();
+
+        http.get("https://api.tianapi.com/txapi/zaoan/index?key=f81e0e4939b0d806dd6cf79be56cf131").then(result => {
+            result = JSON.parse(result);
+            console.log('result ==> ', result);
+            let newlist = result.newslist;
+            for (let key in newlist) {
+                box1.innerHTML = `早安鸡汤:${newlist[key].content}`;
+                console.log(newlist[key].content)
+            }
+        })
+    }
+    query("button")[1].onclick = function () {
+
+
+        let http = new Http();
+
+        http.get("https://api.tianapi.com/txapi/saylove/index?key=f81e0e4939b0d806dd6cf79be56cf131").then(result => {
+            result = JSON.parse(result);
+            console.log('result ==> ', result);
+            let newlist = result.newslist;
+            for (let key in newlist) {
+                box2.innerHTML = `土味情话:${newlist[key].content}`;
+                console.log(newlist[key].content)
+            }
+        })
+    }
+
+    query("button")[2].onclick = function () {
+
+
+        let http = new Http();
+
+        http.get("https://api.tianapi.com/txapi/pyqwenan/index?key=f81e0e4939b0d806dd6cf79be56cf131").then(result => {
+            result = JSON.parse(result);
+            console.log('result ==> ', result);
+            let newlist = result.newslist;
+            for (let key in newlist) {
+                // console.log(newlist[key].content)
+
+                box3.innerHTML = `${newlist[key].source} : ${newlist[key].content}`;
+            }
+        })
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,152 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+a{
+	text-decoration: none;
+	color: white;
+}
+li{
+	list-style: none;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+body{
+	background: #f1f1f1;
+}
+.main{
+	width: 1200px;
+	margin: 0 auto;
+	height: auto;
+	display: flex;
+	flex-wrap: wrap;
+}
+.top{
+	text-align: center;
+	margin: 0 auto;
+	height:170px;
+	width: 100%;
+	color: white;
+	font-size: 24px;
+	background: #83ba20;
+}
+.top p:nth-child(1){
+	font-size: 50px;
+	font-weight: 600;
+	color: black;
+	margin:40px 0 10px 0 ;
+}
+.header{
+	height: 50px;
+	width: 100%;
+	background: #dc133d;
+}
+.headerbtn{
+	display: none;
+}
+.headerbtn img{
+	vertical-align: middle;
+	padding: 10px 0 10px 10px;
+	width: 30px;
+	height: 30px;
+}
+.header ul li{
+	float: left;
+	text-align: center;
+	line-height: 50px;
+	width:100px;
+	height: 50px;
+	color: white;
+}
+.header ul li:nth-child(4){
+	float: right;
+}
+.content{
+	margin: 10px 0;
+	overflow: hidden;
+	height: auto;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.ctleft{
+	flex: 0 0 74%;
+	height: auto;
+}
+.ctleftbox{
+	padding:30px 20px 0 20px;
+	height:370px;
+	background: white;
+	font-size: 12px;
+	margin-bottom: 20px;
+}
+.ctleftbox p:nth-child(1){
+	font-size: 24px;
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+.ctleftbox p:nth-child(4){
+	font-size: 15px;
+	text-indent:20px ;
+}
+.ctleftbox img{
+	width: 100%;
+	margin: 10px 0 15px 0;
+	/* height: 100%; */
+}
+.ctright{
+	flex: 0 0 25%;
+	height: auto;
+}
+.rightbox{
+	background: white;
+	padding: 30px 20px 25px 20px;
+	margin-bottom: 20px;
+}
+.rightbox img{
+	width: 100%;
+	margin: 10px 0;
+}
+.rightbox ul li:nth-child(1){
+	font-size: 22px;
+	font-weight: 600;
+}
+.rightbox p:nth-child(1){
+	font-size: 22px;
+	font-weight: 600;
+}
+.rightbox p:nth-child(3){
+	font-size: 15px;
+	text-indent: 25px;
+}
+.footer{
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	color: white;
+	width: 100%;
+	background: #4a8dfc;
+}
+@media only screen and (max-width:1200px) {
+	.main{
+		width: 100%;
+	}
+}
+@media screen and (max-width:800px) {
+	.ctleft,.ctright{
+		flex: 0 0 100%;
+	}
+}
+@media screen and (max-width:400px) {
+	.header ul{
+		display: none;
+	}
+	.headerbtn{
+		display: block;
+	}
+}

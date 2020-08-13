@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DiviPay</title>
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/divipay.css" rel="stylesheet">
+    <link href="css/divipaLess.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="head">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="logo pull-left">
+                    <img src="images1/logo.svg">
+                </div>
+                <div class="nav pull-right">
+                    <div class="nav_menu">
+                        <span class="glyphicon glyphicon-align-justify"></span>
+                    </div>
+                    <ul>
+                        <li class="dropdown nav_lis">
+                            <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">Features</a>
+
+                            <ul class="dropdown-menu down_nav" aria-labelledby="dLabel">
+                                <span class="triangle"></span>
+                                <li>Virtual Cards</li>
+                                <li>Card Controls</li>
+                                <li>Expense Reporting</li>
+                                <li>Real-time Transactions</li>
+                                <li>Accounting Integrations</li>
+                                <li>SaaS Spending</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown nav_lis">
+                            <a id="dLabel1" data-target="#" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">Solutions</a>
+
+                            <ul class="dropdown-menu down_nav" aria-labelledby="dLabel">
+                                <span class="triangle"></span>
+                                <li>Charities & NFPs</li>
+                                <li>COVID-19</li>
+
+                            </ul>
+                        </li>
+                        <li>Pricing</li>
+                        <li>Support</li>
+                        <li>Login</li>
+                        <li>
+                            <div class="btn-group nav_btn" role="group">
+                                <button type="button" class="btn btn-default">Try Free for 14 Days</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="banner_left col-md-6 col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-12 banner_left_one">
+                            <img src="images1/index.png">
+                            <span>Made in Australia</span>
+                        </div>
+                        <div class="col-sm-12 banner_left_two">
+                            <h1>Virtual corporate cards and expense management all in one place</h1>
+                        </div>
+                        <div class="col-sm-12 banner_left_three clearfix">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-xs-12 btn-group nav_btn fl" role="group">
+                                    <button type="button" class="btn btn-default">Try Free for 14 Days</button>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-xs-12 three_right fl"><a>Book a demo</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 banner_right col-sm-12">
+                    <div class="right_box">
+                        <img src="images1/main-01.webp">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content_one">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="ct_one_top col-md-12 col-xs-12">
+                    <h4>Trusted by Australia's fastest growing businesses</h4>
+                </div>
+                <div class="ct_one_middle col-md-2 col-xs-4">
+                    <img src="images1/canva.png">
+                </div>
+                <div class="ct_one_middle col-md-2 col-xs-4">
+                    <img src="images1/canva.png">
+                </div>
+                <div class="ct_one_middle col-md-2 col-xs-4">
+                    <img src="images1/canva.png">
+                </div>
+                <div class="ct_one_middle col-md-2 col-xs-4">
+                    <img src="images1/canva.png">
+                </div>
+                <div class="ct_one_middle col-md-2 col-xs-4">
+                    <img src="images1/canva.png">
+                </div>
+                <div class="ct_one_middle col-md-2 col-xs-4">
+                    <img src="images1/canva.png">
+                </div>
+                <div class="ct_one_foot col-md-12 col-xs-12">
+                    <div class="foot_box">
+                        <div class="xinxin pull-left">
+                            <img src="images1/xinxin.png">
+                            <img src="images1/xinxin.png">
+                            <img src="images1/xinxin.png">
+                            <img src="images1/xinxin.png">
+                            <img src="images1/xinxin.png">
+                        </div>
+                        <h5 class="pull-left">XERO</h5>
+                        <h5 class="pull-left">Marketplace</h5>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content_two">
+        <div class="container-fluid">
+            <div class="box">
+                <h2>The all-in-one spend management tool that streamlines your expenses</h2>
+            </div>
+
+        </div>
+    </div>
+    <div class="content_three">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="three_right col-md-6 col-md-push-6">
+                    <div class="three_right_box">
+                        <h2>Instantly issue virtual corporate cards</h2>
+                        <p>Issue unlimited virtual corporate cards in seconds and eliminate the need for staff
+                            reimbursements and credit card sharing. All without the paperwork.</p>
+                    </div>
+                </div>
+                <div class="three_left col-md-6 col-md-pull-6">
+                    <img src="images1/virtual-card-mockup.png">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- businesses     begin -->
+    <div class="content_four">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="three_right col-md-6">
+                    <div class="three_right_box">
+                        <h2>Control spending before it happens</h2>
+                        <p>Issue unlimited virtual corporate cards in seconds and eliminate the need for staff
+                            reimbursements and credit card sharing. All without the paperwork.</p>
+                    </div>
+                </div>
+                <div class="three_left col-md-6">
+                    <img src="images1/create-budget-mockup.png">
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- businesses     end -->
+    <!-- The all-in-one   begin -->
+    <div class="content_three pt100">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="three_right col-md-6 col-md-push-6">
+                    <div class="three_right_box">
+                        <h2>Automate your expense management</h2>
+                        <p>DiviPay automatically captures merchant data, GST, and GL codes from each transaction, saving
+                            your staff hours of expense reporting each week.</p>
+                    </div>
+                </div>
+                <div class="three_left col-md-6 col-md-pull-6">
+                    <img src="images1/mobile-transaction-info-mockup.png">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- The all-in-one   end -->
+    <!-- How DiviPay Works  begin -->
+    <div class="content_five">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="five_title">
+                    <h3>How DiviPay Works</h3>
+                </div>
+
+                <div class="content">
+                    <div class="five_boxs">
+                        <div class="box">
+                            <div class="box_left"><span>01</span></div>
+                            <div class="box_right">
+                                <p class="top">Set spending rules with budgets</p>
+                                <p class="text">Create budgets to set spending rules for your staff and ensure payments
+                                    can only be made if they are within the company's expense policy.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="five_boxs">
+                        <div class="box">
+                            <div class="box_left"><span>02</span></div>
+                            <div class="box_right">
+                                <p class="top">Issue virtual corporate cards</p>
+                                <p class="text">Instantly issue team members with their own virtual corporate card.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="five_boxs">
+                        <div class="box">
+                            <div class="box_left"><span>03</span></div>
+                            <div class="box_right">
+                                <p class="top">Pay with your phone</p>
+                                <p class="text">Use our mobile app to access your virtual corporate card, pay instore
+                                    and online, and snap photos of your receipts.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="five_boxs">
+                        <div class="box">
+                            <div class="box_left"><span>04</span></div>
+                            <div class="box_right">
+                                <p class="top">Automate expense management</p>
+                                <p class="text">DiviPay automatically captures merchant info, GST and expense category,
+                                    and exports all expense data into your accounting software.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- How DiviPay Works  end -->
+    <!-- Pay    begin -->
+    <div class="content_six">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="six_left col-md-6 col-sm-12">
+                    <div class="six_box pull-right">
+                        <h4>Pay with your phone</h4>
+                        <div class="pay_box">
+                            <img src="images1/pay.svg">
+                            <div>|</div>
+                            <img src="images1/pay1.svg">
+                        </div>
+                    </div>
+                </div>
+                <div class="six_right  col-md-6 col-sm-12">
+                    <div class="six_img">
+                        <img src="images1/pay.gif">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pay    end -->
+    <!-- Built for and trusted by   begin -->
+    <div class="content_seven">
+        <div class="container">
+            <div class="title">
+                <h3>Built for and trusted by</h3>
+                <div class="aa">
+                    <h3 class="h3_up">CFOs</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-lg-4 seven_contern">
+                    <div class="seven_contern seven_box">
+
+                        <div class="seven_img">
+                            <img src="images1/photo1.png" alt="">
+                        </div>
+                        <div class="seven_text">
+                            <h4>Jasmine Lee</h4>
+
+                            <h5><span>Chief Financial Officer, Reinventure</span></h5>
+                            <span>DiviPay solved the highly clunky and inefficient process of getting corporate cards
+                                issued for employees. DiviPay is easy to use, has a quick response time for customer
+                                service queries and comes with a seamless integration with Xero.</span>
+                        </div>
+                        <div class="seven_down">
+                            <div class="evaluate">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                            </div>
+                            <div class="seven_email">
+                                <a href="">Xero Marketplace</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-lg-4 seven_contern">
+                    <div class="seven_contern seven_box">
+
+                        <div class="seven_img">
+                            <img src="images1/photo1.png" alt="">
+                        </div>
+                        <div class="seven_text">
+                            <h4>Jasmine Lee</h4>
+
+                            <h5><span>Chief Financial Officer, Reinventure</span></h5>
+                            <span>DiviPay solved the highly clunky and inefficient process of getting corporate cards
+                                issued for employees. DiviPay is easy to use, has a quick response time for customer
+                                service queries and comes with a seamless integration with Xero.</span>
+                        </div>
+                        <div class="seven_down">
+                            <div class="evaluate">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                            </div>
+                            <div class="seven_email">
+                                <a href="">Xero Marketplace</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-lg-4 seven_contern">
+                    <div class="seven_contern seven_box">
+
+                        <div class="seven_img">
+                            <img src="images1/photo1.png" alt="">
+                        </div>
+                        <div class="seven_text">
+                            <h4>Jasmine Lee</h4>
+
+                            <h5><span>Chief Financial Officer, Reinventure</span></h5>
+                            <span>DiviPay solved the highly clunky and inefficient process of getting corporate cards
+                                issued for employees. DiviPay is easy to use, has a quick response time for customer
+                                service queries and comes with a seamless integration with Xero.</span>
+                        </div>
+                        <div class="seven_down">
+                            <div class="evaluate">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                            </div>
+                            <div class="seven_email">
+                                <a href="">Xero Marketplace</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-lg-4 seven_contern">
+                    <div class="seven_contern seven_box">
+
+                        <div class="seven_img">
+                            <img src="images1/photo1.png" alt="">
+                        </div>
+                        <div class="seven_text">
+                            <h4>Jasmine Lee</h4>
+
+                            <h5><span>Chief Financial Officer, Reinventure</span></h5>
+                            <span>DiviPay solved the highly clunky and inefficient process of getting corporate cards
+                                issued for employees. DiviPay is easy to use, has a quick response time for customer
+                                service queries and comes with a seamless integration with Xero.</span>
+                        </div>
+                        <div class="seven_down">
+                            <div class="evaluate">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                            </div>
+                            <div class="seven_email">
+                                <a href="">Xero Marketplace</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-lg-4 seven_contern">
+                    <div class="seven_contern seven_box">
+
+                        <div class="seven_img">
+                            <img src="images1/photo1.png" alt="">
+                        </div>
+                        <div class="seven_text">
+                            <h4>Jasmine Lee</h4>
+
+                            <h5><span>Chief Financial Officer, Reinventure</span></h5>
+                            <span>DiviPay solved the highly clunky and inefficient process of getting corporate cards
+                                issued for employees. DiviPay is easy to use, has a quick response time for customer
+                                service queries and comes with a seamless integration with Xero.</span>
+                        </div>
+                        <div class="seven_down">
+                            <div class="evaluate">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                            </div>
+                            <div class="seven_email">
+                                <a href="">Xero Marketplace</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-lg-4 seven_contern">
+                    <div class="seven_contern seven_box">
+
+                        <div class="seven_img">
+                            <img src="images1/photo1.png" alt="">
+                        </div>
+                        <div class="seven_text">
+                            <h4>Jasmine Lee</h4>
+
+                            <h5><span>Chief Financial Officer, Reinventure</span></h5>
+                            <span>DiviPay solved the highly clunky and inefficient process of getting corporate cards
+                                issued for employees. DiviPay is easy to use, has a quick response time for customer
+                                service queries and comes with a seamless integration with Xero.</span>
+                        </div>
+                        <div class="seven_down">
+                            <div class="evaluate">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                                <img src="images1/xinxin1.png" alt="">
+                            </div>
+                            <div class="seven_email">
+                                <a href="">Xero Marketplace</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Built for and trusted by   end -->
+    <!-- Financial Security     begin -->
+    <div class="content_eight">
+        <div class="container">
+            <div class="eight_img">
+                <img src="images1/index.svg" alt="">
+            </div>
+            <h3>Financial Security</h3>
+            <p>DiviPay has been designed from the ground up to keep you safe</p>
+            <div class="row">
+                <div class="eight_box col-md-6">
+                    <div class="eight_text fr clearfix">
+                        <img class="fl" src="images1/gou.png">
+
+                        <div class="fr">
+
+                            <h3>256 bit data encryption</h3>
+                            <p>We use 256 bit encryption to protect the information that you entrust us with and store
+                                it
+                                within highly secure AWS data centres located in Australia.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="eight_box col-md-6">
+                    <div class="eight_text fl clearfix">
+                        <img class="fl" src="images1/gou.png">
+
+                        <div class="fr">
+
+                            <h3>256 bit data encryption</h3>
+                            <p>We use 256 bit encryption to protect the information that you entrust us with and store
+                                it
+                                within highly secure AWS data centres located in Australia.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="eight_box col-md-6">
+                    <div class="eight_text fr clearfix">
+                        <img class="fl" src="images1/gou.png">
+
+                        <div class="fr">
+
+                            <h3>256 bit data encryption</h3>
+                            <p>We use 256 bit encryption to protect the information that you entrust us with and store
+                                it
+                                within highly secure AWS data centres located in Australia.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="eight_box col-md-6">
+                    <div class="eight_text fl clearfix">
+                        <img class="fl" src="images1/gou.png">
+
+                        <div class="fr">
+
+                            <h3>256 bit data encryption</h3>
+                            <p>We use 256 bit encryption to protect the information that you entrust us with and store
+                                it
+                                within highly secure AWS data centres located in Australia.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="eight_box col-md-6">
+                    <div class="eight_text fr clearfix">
+                        <img class="fl" src="images1/gou.png">
+
+                        <div class="fr">
+
+                            <h3>256 bit data encryption</h3>
+                            <p>We use 256 bit encryption to protect the information that you entrust us with and store
+                                it
+                                within highly secure AWS data centres located in Australia.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="eight_box col-md-6">
+                    <div class="eight_text fl clearfix">
+                        <img class="fl" src="images1/gou.png">
+
+                        <div class="fr">
+
+                            <h3>256 bit data encryption</h3>
+                            <p>We use 256 bit encryption to protect the information that you entrust us with and store
+                                it
+                                within highly secure AWS data centres located in Australia.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-12 eight_btn">
+                    <div class="btn-group nav_btn" role="group">
+                        <button type="button" class="btn btn-default">Try Free for 14 Days</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Financial Security     end -->
+    <!-- content_nine   begin -->
+    <div class="content_nine">
+        <div class="container">
+            <div class="nine_title">
+                <h1>Everything you need to streamline and control spending</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="nine_box">
+
+                        <div class="nine_img">
+                            <img src="images1/index6.png" alt="">
+                        </div>
+                        <p>Instant virtual corporate cards</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="nine_box">
+
+                        <div class="nine_img">
+                            <img src="images1/index7.png" alt="">
+                        </div>
+                        <p>Instant virtual corporate cards</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="nine_box">
+
+                        <div class="nine_img">
+                            <img src="images1/index8.png" alt="">
+                        </div>
+                        <p>Instant virtual corporate cards</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="nine_box">
+
+                        <div class="nine_img">
+                            <img src="images1/index9.png" alt="">
+                        </div>
+                        <p>Instant virtual corporate cards</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="nine_box">
+
+                        <div class="nine_img">
+                            <img src="images1/index10.png" alt="">
+                        </div>
+                        <p>Instant virtual corporate cards</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="nine_box">
+
+                        <div class="nine_img">
+                            <img src="images1/index11.png" alt="">
+                        </div>
+                        <p>Instant virtual corporate cards</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content_nine   end -->
+    <!-- Works seamlessly begin -->
+    <div class="content_ten">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 ten_left_box">
+                    <div class="ten_left">
+                        <h2>Works seamlessly with all accounting software</h2>
+                        <p>Integrate in a few clicks, watch as transactions and receipts are automatically imported in
+                            real-time.</p>
+                        <a href="javascrap:viod(0)">See our accounting integrations</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="ten_right_top">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="ten_img">
+                                    <img src="images1/ten1.png" alt="">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="ten_img">
+                                    <img src="images1/ten2.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ten_right_midden">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="ten_img">
+                                    <img src="images1/ten3.png" alt="">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="ten_img">
+                                    <img src="images1/ten4.png" alt="">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="ten_img">
+                                    <img src="images1/ten5.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ten_right_down">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="ten_img">
+                                    <img src="images1/ten6.png" alt="">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="ten_img">
+                                    <img src="images1/ten7.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Works seamlessly end -->
+    <!-- Ready    begin -->
+    <div class="content_eleven">
+        <div class="bgcav"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="eleven_left">
+                        <h1>Ready to issue your first virtual corporate card?</h1>
+                        <div class="btn-group nav_btn" role="group">
+                            <button type="button" class="btn btn-default">Try Free for 14 Days</button>
+                        </div>
+                        <p>No paperwork, issue first card in minutes, cancel any time</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="eleven_img">
+                        <img src="images1/virtual_cards_stacked.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Ready    end -->
+    <!-- foot   begin -->
+    <div class="foot">
+        <div class="container">
+            <div class="row">
+                <div class="foot_text">
+                    <div class="foot_one">
+                        <img src="images1/footlogo.svg">
+                        <div>
+                            <img src="images1/facebook.png" alt="">
+                            <img src="images1/im-twitter.png" alt="">
+                            <img src="images1/linkedin.png" alt="">
+                        </div>
+                        <P>customerservice@divipay.com</P>
+                        <P>Copyright © 2017 - 2019 DiviPay Pty Ltd.</P>
+                        <P>ABN 39 617 434 607. All rights reserved</P>
+                    </div>
+                    <div class="foot_box">
+                        <ul>
+                            <li>Getting Started</li>
+                            <li>Pricing</li>
+                            <li>Support</li>
+                            <li>Login</li>
+                            <li>Try Free for 14 Days</li>
+                        </ul>
+                    </div>
+                    <div class="foot_box">
+                        <ul>
+                            <li>Features</li>
+                            <li>Virtual Cards</li>
+                            <li>Card Controls</li>
+                            <li>Expense Reporting</li>
+                            <li>Real-time Transactions</li>
+                            <li>Accounting Integrations</li>
+                            <li>SaaS Spending</li>
+                        </ul>
+                    </div>
+                    <div class="foot_box">
+                        <ul>
+                            <li>Solutions</li>
+                            <li>Charities & NFPs</li>
+                            <li>COVID-19</li>
+                        </ul>
+                    </div>
+                    <div class="foot_box">
+                        <ul>
+                            <li>Resources</li>
+                            <li>Apple Pay</li>
+                            <li>FAQs</li>
+                            <li>Help Centre</li>
+                            <li>Terms</li>
+                            <li>Privacy</li>
+                        </ul>
+                    </div>
+                </div>
+                <p>This material is general information only and does not take into account your objectives, financial situation or needs. We recommend you consider the Product Disclosure Statement (PDS) relating to this product before making any decision. This product is available only to Australian businesses and residents. Terms and conditions and fees and charges will apply to use of the Divipay Card. The Divipay Card is a prepaid, reloadable Mastercard issued by EML Payment Solutions Ltd ABN 30 131 436 532 AFSL 404131. Divipay Pty Ltd ABN 39 617 434 607 (Authorised Representative number 1269625) is involved in the promotion and distribution of the Divipay Card and is a Corporate Authorised Representative of EML Payment Solutions Ltd ABN 30 131 436 532. Mastercard and the Mastercard brand mark are registered trademarks, and the circles design is a trademark of Mastercard International Incorporated</p>
+            </div>
+        </div>
+    </div>
+    <!-- foot   end -->
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<script>
+
+    // $(".five_boxs .box").on()
+    // $(document).ready(function () {
+    //     $('.five_boxs .box .box_right').bind({
+    //         mouseenter: function (e) {
+    //             $(this).addClass("active").bind('mouseenter').bind('mouseleave')
+    //         }, mouseleave: function (e) {
+    //             $(this).removeClass("active")
+    //         }, click: function (e) {
+    //             $(this).addClass("active").unbind('mouseenter').unbind('mouseleave')
+    //             $(this).parents(".five_boxs").siblings().find(".box_right").removeClass("active")
+    //         }
+    //     });
+    // });
+
+    $(".five_boxs .box .box_right").on("click", function () {
+        console.log(111)
+        $(this).addClass("active").parents(".five_boxs").siblings().find(".box_right").removeClass("active")
+
+    })
+    //  关闭点击展开事件
+    $(document).ready(function () {
+        $(document).off('click.bs.dropdown.data-api');
+    });
+
+    $(document).ready(function () {
+        dropdownOpen();//调用
+    });
+    /**
+     * 鼠标划过就展开子菜单，免得需要点击才能展开
+     */
+    function dropdownOpen() {
+
+        var $dropdownLi = $('li.dropdown');
+
+        $dropdownLi.mouseover(function () {
+            $(this).addClass('open');
+        }).mouseout(function () {
+            $(this).removeClass('open');
+        });
+    }
+
+</script>
+
+</html>

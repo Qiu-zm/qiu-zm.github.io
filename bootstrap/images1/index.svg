@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="69px" height="64px" viewBox="0 0 69 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>Asset 43</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="LandingPage" transform="translate(-804.000000, -2877.000000)">
+            <g id="Asset-43" transform="translate(805.000000, 2878.000000)">
+                <rect id="Rectangle" fill="#7F50E6" fill-rule="nonzero" x="6.09" y="10.5" width="61.82" height="46" rx="8.03"></rect>
+                <rect id="Rectangle" fill-rule="nonzero" x="1" y="8" width="60" height="8"></rect>
+                <g id="lock" stroke="#FFFFFF" stroke-linejoin="round" stroke-width="2">
+                    <g id="lock-2" transform="translate(28.000000, 27.000000)">
+                        <path d="M0,13 L24,13 L24,32 C24,33.6568542 22.6568542,35 21,35 L3,35 C1.34314575,35 0,33.6568542 0,32 L0,13 Z" id="Path"></path>
+                        <path d="M12,19 C10.7637877,19.0073196 9.6586449,19.7722048 9.21634507,20.9266073 C8.77404525,22.0810098 9.08516521,23.3885244 10,24.22 L10,27 C10,28.1045695 10.8954305,29 12,29 C13.1045695,29 14,28.1045695 14,27 L14,24.22 C14.9148348,23.3885244 15.2259548,22.0810098 14.7836549,20.9266073 C14.3413551,19.7722048 13.2362123,19.0073196 12,19 Z" id="Path"></path>
+                        <path d="M4,13 L4,8 C4,3.581722 7.581722,0 12,0 L12,0 C16.418278,0 20,3.581722 20,8 L20,13" id="Path" stroke-linecap="round"></path>
+                    </g>
+                    <path d="M23,40 L4,40 C1.790861,40 0,38.209139 0,36 L0,4 C0,1.790861 1.790861,0 4,0 L58,0 C60.209139,0 62,1.790861 62,4 L62,36 C62,38.209139 60.209139,40 58,40 L57,40" id="Path"></path>
+                    <path d="M6,28 L12,28" id="Path" stroke-linecap="round"></path>
+                    <path d="M16,28 L22,28" id="Path" stroke-linecap="round"></path>
+                    <path d="M1,8 L61,8" id="Path" stroke-linecap="square"></path>
+                    <path d="M1,16 L61,16" id="Path" stroke-linecap="square"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

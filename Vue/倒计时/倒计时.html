@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .box{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  .timeBox{
+    padding: 20px;
+    background-color: #CCC;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  input {
+    width: 20px;
+    text-align: center;
+    border-radius: 5px;
+  }
+  h2{
+    /* color: skyblue; */
+  }
+  p{
+    text-align: center;
+    font-weight: 700;
+  }
+  b{
+    color: red;
+    margin-right: 10px;
+  }
+  span{
+    background-color: black;
+    display: inline-block;
+    padding: 5px;
+    color: white;
+    border-radius: 5px;
+    margin: 0 5px;
+  }
+  button{
+    margin-top: 60px;
+    border: none;
+    background-color: red;
+    color: white;
+    width: 100px;
+    height: 40px;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+</style>
+
+<body>
+
+  <div id="app">
+    <!-- <input type="text" v-model="daytime">
+    <button>开始计时</button> -->
+    <my-time></my-time>
+    <!-- <div class="box">05天06时36分54秒</div> -->
+  </div>
+</body>
+<script src="../js/Vue.js"></script>
+<script>
+  Vue.component('my-time', {
+    template: `
+    <div class="box">
+      <div class="timeBox">
+      <div>
+        <p>请设置时间:<p>
+        <input type="number" v-model="daytime" > 天 
+        <input type="number" v-model="hourTime" > 时
+        <input type="number" v-model="minTime" > 
+        分 
+        <input type="number" v-model="sTime" > 
+        秒
+      </div>
+      <button @click="countDown">开始计时</button>
+      <h2><b>{{d}}</b>天<span>{{h}}</span>时<span>{{m}}</span>分<span>{{s}}</span>秒<span>{{ss}}</span></h2>
+    </div>
+    </div>
+    `,
+    data() {
+      return {
+        daytime: "",
+        hourTime: "",
+        minTime: "",
+        sTime: "",
+        time: 0,
+        d: "00",
+        h: "00",
+        m: "00",
+        s: "00",
+        ss: "00",
+        xxx: null,
+        flag: true,
+        flag1: true,
+      }
+    },
+    methods: {
+
+      countDown() {
+        // 天
+        let day = this.daytime;
+        // 时
+        let hour = this.hourTime;
+        // 分
+        let min = this.minTime;
+        // 秒
+        let sec = this.sTime;
+        console.log('day ==> :>> ', day, hour, min, sec);
+        this.maxTime(hour);
+        this.maxTimes(min);
+        this.maxTimes(sec);
+
+        console.log('hour,min,sec :>> ', hour, min, sec);
+
+        //获取结束时间
+        let days = day * 24 * 60 * 60;
+        let hours = hour * 60 * 60;
+        let mins = min * 60;
+
+        this.time = (days + hours + mins + +sec) * 100;
+        console.log('this.time :>> ', this.time);
+        clearInterval(this.xxx);
+        if (this.flag && this.flag1) {
+          this.runtime();
+        }
+      },
+
+      isZero(sum) {
+        return sum < 10 ? '0' + sum : sum;
+      },
+      maxTime(num) {
+        if (num < 0 || num > 24) {
+          alert("请输入有效时间格式");
+          day = 0;
+          this.daytime = 0,
+            this.hourTime = 0,
+            this.minTime = 0,
+            this.sTime = 0,
+            this.flag = false;
+          return;
+        } else {
+          this.flag = true;
+        }
+      },
+      maxTimes(num) {
+        if (num < 0 || num > 60) {
+          alert("请输入有效时间格式");
+          day = 0;
+          this.daytime = 0,
+            this.hourTime = 0,
+            this.minTime = 0,
+            this.sTime = 0,
+            this.flag1 = false;
+          return;
+        } else {
+          this.flag1 = true;
+        }
+      },
+
+      runtime() {
+
+        this.xxx = setInterval(() => {
+
+          // this.time--;
+          this.time = this.time - 1;
+          if (this.time < 0) {
+            alert("倒计时结束!")
+            clearInterval(this.xxx);
+            return;
+          }
+          //天
+          this.d = this.isZero(Math.floor(this.time / 60 / 60 / 24 / 100));
+          // console.log('d ==> ', this.d);
+
+          //时
+          this.h = this.isZero(Math.floor(this.time / 60 / 60 / 100 % 24));
+          // console.log('h ==> ', this.h);
+
+          //分
+          this.m = this.isZero(Math.floor(this.time / 60 / 100 % 60));
+          // console.log('m ==> ', this.m);
+
+          //秒
+          this.s = this.isZero(Math.floor(this.time / 100 % 60));
+          // console.log('s ==> ', this.s);
+          //毫秒
+
+          // this.countDown();
+          //   setInterval(() => {
+          this.ss = this.isZero(Math.floor(this.time % 100));
+          //   this.ss = this.ss - 10;
+          // console.log('ss ==> ', this.ss);
+          // },10)
+
+        }, 10);
+
+
+      }
+
+
+    },
+    created() {
+
+    }
+  })
+  new Vue({
+    el: '#app',
+
+  })
+
+</script>
+
+</html>
