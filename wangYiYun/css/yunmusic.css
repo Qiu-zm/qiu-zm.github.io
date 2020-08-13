@@ -378,8 +378,9 @@ input[type=radio] {
 }
 
 .volume-v .volume_make i {
+    position: absolute;
+    right: 0;
     float: right;
-    transform: translateX(14px);
 }
 
 .volume-v .volume_make i::after {
@@ -392,14 +393,13 @@ input[type=radio] {
 }
 
 .volume-v .volume_make {
-    max-width: 96%;
+    width: calc(100% - 15px);
+    min-width: 15px;
     position: absolute;
-    /* width: 80%; */
     height: 9px;
     background: #FF6666;
     left: 0;
     z-index: 1;
-    /* bottom: -15px; */
     border-radius: 15px;
     display: flex;
     justify-content: right;

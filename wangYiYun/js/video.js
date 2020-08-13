@@ -111,16 +111,6 @@ audios.addEventListener("timeupdate", function () {
     //排版时间
     PJSJ(sec, timeleft)
 
-    //判断是否播放完毕,完毕自动播放下一曲
-    // if (audios.ended) {
-    //     constant++;
-    //     cut();
-    //     //播放歌曲
-    //     songplay(items, constant);
-    //     //点击切换歌曲后,再次判断播放状态
-    //     Isstop(lis[1]);
-    // }
-
     //判断是否点击随机播放
 
 })
@@ -445,7 +435,9 @@ audios.addEventListener("volumechange", function () {
 volumeinp.addEventListener("input", function () {
     console.log(volumeinp.value);
     audios.volume = volumeinp.value / 100;
+    console.log('volumeinp.value :>> ', volumeinp.value);
     volumediv.style.width = volumeinp.value + "%";
+    console.log('volumediv.style.width :>> ', volumediv.style.width);
 })
 
 
