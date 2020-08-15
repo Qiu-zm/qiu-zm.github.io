@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    .content{
+        width: 800px;
+        margin: 100px auto;
+    }
+    .box{
+        float: left;
+        margin: 20px;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.5s;
+    }
+    img{
+        transition: all 6s;
+        position: absolute;
+    }
+    img:nth-of-type(1){
+        left: 0;
+        top: 0;
+
+    }
+    img:nth-of-type(2){
+        right:50px;
+        top: 0;
+        z-index: 99;
+    }
+    img:nth-of-type(3){
+        left: 0;
+        top: 0;
+    }
+    .box:hover img:nth-of-type(1){
+        transform: translateX(-250px);
+    }
+    .box:hover img:nth-of-type(3){
+        transform: translateX(-250px);
+    }
+    .box:hover img:nth-of-type(2){
+        transform: translateX(250px);
+    }
+    .box:hover{
+        transform: scale(1.1);
+    }
+</style>
+<body>
+    <div class="content">
+
+        <div class="box">
+            <!-- 背景 -->
+            <img src="images/pc1.png">
+            <!-- 车 -->
+            <img src="images/pc2.png">
+            <!-- 地 -->
+            <img src="images/pc3.png">
+        </div>
+        <div class="box">
+            <!-- 背景 -->
+            <img src="images/pc4.png">
+            <!-- 车 -->
+            <img src="images/pc6.png">
+            <!-- 地 -->
+            <img src="images/pc5.png">
+        </div>
+        <div class="box">
+            <!-- 背景 -->
+            <img src="images/pc7.png">
+            <!-- 车 -->
+            <img src="images/pc9.png">
+            <!-- 地 -->
+            <img src="images/pc8.png">
+        </div>
+    </div>
+    </body>
+    </html>

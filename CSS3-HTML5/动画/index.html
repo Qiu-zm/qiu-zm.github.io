@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box1 {
+        background: url("images/P_036.jpg");
+        width: 205px;
+        height: 205px;
+        margin: 10px;
+        border-radius: 50%;
+        position: relative;
+    }
+
+    .box {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        left: -8px;
+        top: -8px;
+        border-top: 9px orange solid;
+        border-left: 9px orange solid;
+        border-right: 9px yellowgreen solid;
+        border-bottom: 9px yellowgreen solid;
+        border-radius: 50%;
+        transition: all 1s;
+    }
+
+    .make {
+        display: flex;
+        align-items: center;
+        opacity: 0;
+        background: black;
+        position: absolute;
+        width: 98%;
+        height: 98%;
+        top: 0;
+        left: 0;
+        color: white;
+        border-radius: 50%;
+        /* transform: translateX(-51%) translateY(-51%); */
+        transition: all 1s;
+    }
+
+    .box1:hover>.box {
+        transform: rotate(180deg);
+    }
+
+    .box1:hover>.make {
+        opacity: 0.6;
+    }
+    .box1 .make .text{
+        text-align: center;
+    }
+    .box1 .make .text h3 {
+        color: #fff;
+        z-index: 99;
+        text-transform: uppercase;
+        position: relative;
+        letter-spacing: 2px;
+        font-size: 22px; 
+        margin: 10px 30px;
+        text-shadow: 0 0 1px white, 0 1px 2px rgba(0, 0, 0, 0.3);
+
+    }
+
+    .box1 .make .text p {
+        color: #bbb;
+        padding: 10px 5px;
+        font-style: italic;
+        margin: 0 30px;
+        font-size: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.5);
+    }
+</style>
+
+<body>
+    <div class="box1">
+        <div class="box"></div>
+        <div class="make">
+            <div class="text">
+                <h3>Heading here</h3>
+                <p>Description goes here</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
