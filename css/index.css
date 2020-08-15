@@ -17,6 +17,9 @@
   width: 100%;
   display: block;
 }
+.about-us div {
+  height: 25vh;
+}
 #skrollr-body .gap .htmleaf-header {
   padding-top: 90px;
 }
@@ -42,8 +45,8 @@
       -ms-flex-align: center;
           align-items: center;
 }
-#skrollr-body .body-text .html-box .HC-box {
-  max-width: 33.33%;
+#skrollr-body .body-text .html-box .HC-box img {
+  max-height: 250px;
 }
 #skrollr-body .body-text .html-box .HC-box p {
   text-align: center;

@@ -41,22 +41,61 @@ var playlist = [{
     id: "1368739917",
     name: "糯米Nomi",
     artists: "寂寞才说爱",
-    picUrl: "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+    picUrl: "",
+    // picUrl: "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+    // picUrl: "https://p2.music.126.net/Y3KuzbKJor8y4z6zXQNzUg==/1368739917.jpg",
 }
 ]
-
 //获取数据,动态创建列表
 playlist.forEach(function (element, index) {
 
+    // songimg(1368739917);
+    // console.log('songimg(1368739917) :>> ', songimg(1368739917));
     var itembox = document.createElement("div");
-
+    // console.log('element.picUrl :>> ', element.picUrl);
+    // element.picUrl = element.picUrl[0].al.picUrl;
     itembox.classList.add("item");
     itembox.setAttribute("data-id", element.id);
     itembox.setAttribute("data-index", index);
-    itembox.innerHTML = "<div class='left'><img src='" + element.picUrl + "'></div><div class='right'><h4>" + element.artists + "</h4><p>" + element.name + "</p></div>";
-    box.appendChild(itembox);
-})
+    
+    
+    itembox.innerHTML = "<div class='left'><img class='songimg' src='" + element.picUrl + "'></div><div class='right'><h4>" + element.artists + "</h4><p>" + element.name + "</p></div>";
 
+
+    box.appendChild(itembox);
+});
+// songimg(1368739917);
+//废弃
+function songimg(songId) {
+    $.ajax({
+        type: "GET",
+        url: "https://api.imjad.cn/cloudmusic/",
+        data: {
+            type: "detail",
+            id: songId
+        },
+        dataType: "JSON",
+        success: function (response) {
+            // return response;
+            console.log('$(".songimg") :>> ', $(".item"),response);
+            $(this).css("background-image","url(on.jpg)");
+            // console.log('$(".songImg") :>>' , response);
+            // console.log('response :>> ', response.songs[0].al.picUrl);
+            // $(than)[0].picUrl = response.songs[0].al.picUrl
+            // return response.songs[0].al.picUrl
+        }
+    });
+    // getJSON(
+    //     // http://api.kele8.cn/agent/
+    //     "https://api.imjad.cn/cloudmusic/",{
+    //         type:"detail",
+    //         id:songId
+    //     },
+    //     function (data) {
+    //         return data.songs[0].al.picUrl;
+    //     })
+
+}
 //秒数为奇数时补零
 function aaa(sum) {
     if (sum < 10) {
@@ -251,7 +290,7 @@ lis[1].onclick = function () {
 //obj   歌曲对象
 //index 第几首歌 ,下标0开始
 function songplay(songobj, inde) {
-    //获取自定义属性
+
     istype(songobj, inde);
     // var dataid = songobj[inde].getAttribute("data-index");
     // console.log("songList ==>", songList)
@@ -350,6 +389,7 @@ var songList;
 var songnum = 0;
 
 function istype(arr, indexs) {
+
     if (box.style.display == "block") {
         console.log("我的收藏");
         // istype = searchnum;
@@ -510,7 +550,7 @@ for (var i = 0; i < 20; i++) {
             var pos = str.indexOf('=');
             // 在截取=后面的ID
             var result = str.substring(pos + 1, str.length);
-            
+
             itembox.classList.add("item");
             itembox.setAttribute("data-id", result);
             itembox.setAttribute("data-index", indexa++);
@@ -604,6 +644,7 @@ $(boxr).bind("DOMNodeInserted", function () {
                     ele.classList.remove("active");
                 })
                 songnum--;
+                
                 //调用歌曲播放
                 songplay(songList, songnum);
                 //添加高亮
