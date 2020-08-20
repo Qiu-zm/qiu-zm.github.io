@@ -530,7 +530,14 @@ var textinp = document.querySelector(".box_content-v .search input");
 var textspan = document.querySelector(".box_content-v .search span");
 var isresou = true;
 
-//热歌推荐
+// hotMusic();
+
+// $('.hotMusic').click(function(){
+//     boxr.innerHTML = "";
+//     hotMusic();
+// })
+// function hotMusic(){
+    //热歌推荐
 var resouarr = [];
 var indexa = 0;
 for (var i = 0; i < 20; i++) {
@@ -563,7 +570,9 @@ for (var i = 0; i < 20; i++) {
             boxr.appendChild(fragment);
         })
 }
-console.log("热歌集合 ==>", resouarr)
+// }
+
+// console.log("热歌集合 ==>", resouarr)
 
 textinp.value = "";
 // 点击搜索
